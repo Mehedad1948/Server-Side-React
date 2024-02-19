@@ -3,7 +3,11 @@ import React from 'react'
 const Home = () => {
     return (
         <div>
-            Home new
+            <div>
+
+                Home new
+            </div>
+            <button onClick={() => console.log('Hi there')}>Press Me</button>
         </div>
     )
 }
