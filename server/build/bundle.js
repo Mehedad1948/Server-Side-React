@@ -7042,19 +7042,34 @@ if (process.env.NODE_ENV === 'production') {
 "use strict";
 
 
-var express = __webpack_require__(54);
-var React = __webpack_require__(16);
+var _express = __webpack_require__(54);
 
-var _require = __webpack_require__(110),
-    renderToString = _require.renderToString;
+var _express2 = _interopRequireDefault(_express);
 
-var Home = __webpack_require__(121).default;
+var _react = __webpack_require__(16);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _server = __webpack_require__(110);
+
+var _Home = __webpack_require__(121);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Commonjs
+// const express = require('express')
+// const React = require('react')
+// const { renderToString } = require('react-dom/server')
+// const Home = require('./client/components/Home').default
 //  Using requre to becompatible to es15 modules with commonjs
 
-var app = express();
+// Es2015 , To be similar to client codes , make possible by webpack
+var app = (0, _express2.default)();
 
 app.get('/', function (req, res) {
-    var content = renderToString(React.createElement(Home, null));
+    var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
     console.log(content);
     res.send(content);
 });
