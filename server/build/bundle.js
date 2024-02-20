@@ -80,24 +80,11 @@ var _express = __webpack_require__(2);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _react = __webpack_require__(0);
+var _renderer = __webpack_require__(5);
 
-var _react2 = _interopRequireDefault(_react);
-
-var _server = __webpack_require__(3);
-
-var _Home = __webpack_require__(4);
-
-var _Home2 = _interopRequireDefault(_Home);
+var _renderer2 = _interopRequireDefault(_renderer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Commonjs
-// const express = require('express')
-// const React = require('react')
-// const { renderToString } = require('react-dom/server')
-// const Home = require('./client/components/Home').default
-//  Using requre to becompatible to es15 modules with commonjs
 
 // Es2015 , To be similar to client codes , make possible by webpack
 var app = (0, _express2.default)();
@@ -106,11 +93,8 @@ var app = (0, _express2.default)();
 app.use(_express2.default.static('public'));
 
 app.get('/', function (req, res) {
-    var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
 
-    var html = '\n    <html>\n    <head></head>\n    <body>\n    <div id=\'root\'>' + content + '</div>\n    <script src="bundle.js"></script>\n    </html>\n    ';
-
-    res.send(html);
+    res.send((0, _renderer2.default)());
 });
 
 app.listen(3000, function () {
@@ -166,6 +150,35 @@ var Home = function Home() {
 };
 
 exports.default = Home;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _server = __webpack_require__(3);
+
+var _Home = __webpack_require__(4);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+    var content = (0, _server.renderToString)(_react2.default.createElement(_Home2.default, null));
+
+    return '\n    <html>\n    <head></head>\n    <body>\n    <div id=\'root\'>' + content + '</div>\n    <script src="bundle.js"></script>\n    </html>\n    ';
+};
 
 /***/ })
 /******/ ]);
